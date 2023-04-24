@@ -1,0 +1,13 @@
+[api]
+key = "5IV341UTyau11PRkRL0AsvF9teWdWrlMNoovTBs4pxUueCTQZgX2C2x0rlBPLR3q"
+secret = "KorfxjylsqobEzuFffVb0d8qZtDDLRZtHcbyVmHi4zsixgd91wQFdA3qEZpSsm58"
+
+[trading]
+pairs = ["BTCUSDT", "ETHUSDT", "BNBUSDT"]
+trade_frequency = "1d"
+order_size = 0.01
+risk_per_trade = 0.01
+
+[risk_management]
+stop_loss = 0.03
+take_profit = 0.06
