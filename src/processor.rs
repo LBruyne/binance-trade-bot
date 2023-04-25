@@ -1,11 +1,13 @@
 use std::collections::VecDeque;
 use crate::Kline;
 use crate::strategies::dual_sma_strategy;
+use crate::orders::place_order;
 
-pub fn process_klines(klines: &[Kline]) {
+pub fn process_klines(klines: &[Kline], trading_pair: &str, api_key: &str, secret_key: &str, dry_run: bool) {
     let signal = dual_sma_strategy(&klines, 10, 50);
     if let Some(signal) = signal {
         println!("Signal: {}", signal);
+        place_order(trading_pair, &signal, api_key, secret_key, dry_run);
     }
 }
 

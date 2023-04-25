@@ -2,6 +2,7 @@ mod config;
 mod kline;
 mod processor;
 mod strategies;
+mod orders;
 
 use binance::api::*;
 use binance::market::*;
@@ -20,7 +21,7 @@ fn main() {
     let api_key = config.api.key;
     let secret_key = config.api.secret;
 
-    let market: Market = Binance::new(Some(api_key), Some(secret_key));
+    let market: Market = Binance::new(Some(api_key.clone()), Some(secret_key.clone()));
 
     // Set the execution interval in seconds (e.g., 60 seconds)
     let interval = Duration::from_secs(60);
@@ -48,7 +49,7 @@ fn main() {
                     // // );
 
                     let klines_data: Vec<Kline> = klines_data.iter().map(|kline| Kline::from(kline)).collect();
-                    process_klines(&klines_data);
+                    process_klines(&klines_data, trading_pair, &api_key, &secret_key, false);
                 }
             }
         }
